@@ -3,8 +3,8 @@ import { BlurImage } from '@/components/common/BlurImage';
 import { Container } from '@/components/common/Container';
 import { Button } from '@/components/ui/button';
 import { marketingImages, NEUTRAL_BLUR } from '@/lib/images';
-
-const VALUES = ['Elegant', 'Timeless', 'Accessible', 'Professional'];
+import { siteConfig } from '@/lib/site-config';
+import { brandValues } from '@/content/about';
 
 /** Split image + copy block introducing the studio and its values. */
 export function AboutTeaser() {
@@ -16,7 +16,7 @@ export function AboutTeaser() {
             <BlurImage
               src={marketingImages.aboutTeaser}
               blurDataURL={NEUTRAL_BLUR}
-              alt="Interior designer arranging a styled vignette"
+              alt="The founders of Blooming Staging and Design"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -25,25 +25,26 @@ export function AboutTeaser() {
 
           <div className="flex flex-col gap-6">
             <span className="tracking-brand text-xs font-medium uppercase text-gold">
-              Our Studio
+              Our Story
             </span>
             <h2 className="font-display text-3xl leading-tight text-balance sm:text-4xl">
-              Thoughtful design, rooted in how you live
+              Transforming houses into homes since 2020
             </h2>
             <p className="text-base leading-relaxed text-muted-foreground text-pretty">
-              Blooming Staging and Design is a Colorado studio founded on a simple belief:
-              beautiful spaces should be accessible. Whether we are staging a listing to sell
-              or designing the home of your dreams, we bring a fresh, refined eye and a
-              warm, professional process to every project.
+              Since 2020, founders {siteConfig.founders.join(' and ')} have built a powerhouse
+              boutique staging company from scratch across Colorado&apos;s Front Range — hand-staging
+              over 500 homes and more than $250M in local real estate. We own every piece of our
+              warehouse inventory and stay hands-on from the first design concept to the last sofa up
+              the stairs.
             </p>
 
             <ul className="flex flex-wrap gap-3">
-              {VALUES.map((value) => (
+              {brandValues.map((value) => (
                 <li
-                  key={value}
+                  key={value.title}
                   className="rounded-full border border-charcoal/15 bg-cream px-4 py-1.5 text-sm text-charcoal/80"
                 >
-                  {value}
+                  {value.title}
                 </li>
               ))}
             </ul>

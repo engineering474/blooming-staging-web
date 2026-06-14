@@ -19,6 +19,6 @@ export const NEUTRAL_BLUR =
 
 export const marketingImages = {
   hero: unsplash('photo-1600585154340-be6161a56a0c', 2000),
-  aboutTeaser: unsplash('photo-1616486338812-3dadae4b4ace', 1200),
+  aboutTeaser: '/images/about/3.jpg',
   ctaBackground: unsplash('photo-1618220179428-22790b461013', 2000),
 } as const;

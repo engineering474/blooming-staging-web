@@ -16,7 +16,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <Logo tone="light" className="items-start" />
+            <Logo tone="light" />
             <p className="max-w-xs text-sm leading-relaxed text-cream/70">
               {siteConfig.tagline}. Home staging and interior design serving{' '}
               {siteConfig.regionName}.

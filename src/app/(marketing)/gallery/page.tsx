@@ -2,11 +2,10 @@ import type { Metadata } from 'next';
 import { Container } from '@/components/common/Container';
 import { PageHero } from '@/components/common/PageHero';
 import { JsonLd } from '@/components/common/JsonLd';
-import { GalleryGrid } from '@/components/gallery/GalleryGrid';
+import { AlbumGallery } from '@/components/gallery/AlbumGallery';
 import { CtaSection } from '@/components/home/CtaSection';
 import { buildBreadcrumb, buildCollectionPage } from '@/lib/seo/json-ld';
-import { projects } from '@/content/projects';
-import { services } from '@/content/services';
+import { galleryCategories } from '@/content/gallery';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
@@ -22,11 +21,14 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
-  // Only show filters for services that actually have projects.
-  const usedServiceSlugs = new Set(projects.map((p) => p.serviceSlug));
-  const filters = services
-    .filter((s) => usedServiceSlugs.has(s.slug))
-    .map((s) => ({ slug: s.slug, label: s.shortName }));
+  // Flatten albums for the CollectionPage JSON-LD (cover image per album).
+  const albumItems = galleryCategories.flatMap((category) =>
+    category.albums.map((album) => ({
+      name: `${category.title} — ${album.label}`,
+      path: '/gallery',
+      image: album.images[0]?.src,
+    })),
+  );
 
   return (
     <>
@@ -36,28 +38,20 @@ export default function GalleryPage() {
             { name: 'Home', path: '/' },
             { name: 'Gallery', path: '/gallery' },
           ]),
-          buildCollectionPage(
-            'Gallery',
-            '/gallery',
-            projects.map((p) => ({
-              name: p.title,
-              path: `/gallery/${p.slug}`,
-              image: p.cover,
-            })),
-          ),
+          buildCollectionPage('Gallery', '/gallery', albumItems),
         ]}
       />
 
       <PageHero
         eyebrow="Our Work"
         title="Project gallery"
-        description="A selection of homes we've staged and designed across Colorado. Filter by service to see what we can do for your space."
+        description="A selection of homes we've staged and designed across Colorado — browse by room and project to see what we can do for your space."
         breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Gallery' }]}
       />
 
       <section className="py-16 sm:py-24">
         <Container>
-          <GalleryGrid projects={projects} filters={filters} />
+          <AlbumGallery categories={galleryCategories} />
         </Container>
       </section>
 

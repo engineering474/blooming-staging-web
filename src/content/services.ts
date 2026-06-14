@@ -3,6 +3,9 @@ import type { Service } from '@/interfaces/content';
 /**
  * The three core services. Adding a service here automatically creates its
  * detail page (/services/[slug]), nav/cards, sitemap entry, and Service JSON-LD.
+ *
+ * Content is plain data so it can be moved into a headless CMS (e.g. Sanity)
+ * later without touching any component code.
  */
 export const services: Service[] = [
   {
@@ -10,73 +13,120 @@ export const services: Service[] = [
     shortName: 'Staging',
     name: 'Home Staging',
     summary:
-      'Professionally staged homes sell faster and for up to 15% more. We furnish and style your listing to help buyers fall in love.',
+      'Maximize your equity and minimize days on market. We highlight a property’s best features to inspire higher offers and faster sales.',
     intro:
-      'First impressions sell homes. Our staging team transforms empty or lived-in properties into warm, aspirational spaces that photograph beautifully and move buyers to make an offer.',
+      'Maximize Your Equity, Minimize Days on Market. In today’s competitive real estate market, buyers aren’t just looking for a property — they are looking for a lifestyle. Home staging transforms spaces by highlighting a property’s best features, maximizing perceived square footage, and creating an emotional connection that inspires higher offers and faster sales. We offer tailored staging solutions to fit every property type and budget:',
     sections: [
       {
-        heading: 'Why staging works',
+        heading: 'Vacant Home Staging',
+        tagline: 'Transforming cold, empty spaces into warm, inviting homes.',
         body: [
-          'Buyers struggle to picture themselves in an empty room — and they remember the flaws of a cluttered one. Staging bridges that gap, presenting each space at its best so the listing stands out online and in person.',
-          'Studies consistently show staged homes spend less time on the market and command higher offers. For agents and sellers alike, staging is one of the highest-return investments you can make before listing.',
+          'Empty rooms actually look smaller to buyers, and layout challenges can leave them confused. Our full-service vacant staging solves this by bringing in high-end, curated furniture, rugs, lighting, artwork, and accessories. We strategically design key rooms (like the living room, kitchen, primary suite, and dining areas) to give the home scale, purpose, and unforgettable online photos.',
         ],
       },
       {
-        heading: 'How we work',
+        heading: 'Occupied Home Staging',
+        tagline: 'Working with what you have to get the best results.',
         body: [
-          'We start with a walkthrough and a clear plan tailored to your property and price point. From there we bring in furniture, art, and accessories from our own inventory, styling every room to feel inviting and intentional.',
-          'Whether you need a vacant home fully furnished or a few rooms refreshed, we scale the package to your listing and timeline.',
+          'Selling a home while living in it is a challenge. We partner with homeowners to optimize the property using a blend of their existing furniture and our specialized staging inventory. We will help you declutter, depersonalize, and rearrange your layout to maximize flow, brighten up the space, and appeal to the widest pool of prospective buyers.',
+        ],
+      },
+      {
+        heading: 'Professional Staging Consultations',
+        tagline: 'A roadmap for the DIY homeowner.',
+        body: [
+          'If you prefer to do the physical work yourself but need an expert game plan, our staging consultation is the perfect option. We will walk through the entire property together (interior and exterior) and provide a detailed, room-by-room action plan. You’ll get specific recommendations on paint touch-ups, decluttering, furniture placement, and curb appeal enhancements to tackle before listing.',
         ],
       },
     ],
     highlights: [
-      'Vacant and occupied home staging',
-      'Full inventory of furniture and accessories',
-      'Styling optimized for listing photography',
-      'Fast turnaround to match your listing date',
+      'Vacant staging with high-end, curated furniture and accessories',
+      'Occupied staging that blends your pieces with our inventory',
+      'DIY consultations with a detailed, room-by-room action plan',
+      'Styling designed to maximize space and listing photography',
+    ],
+    pricing: [
+      {
+        id: 'per-room',
+        name: 'Per-room staging',
+        price: '$450–$650',
+        unit: 'per room',
+        description:
+          'Full-house furnishing and logistics — curated furniture, rugs, lighting, artwork, and accessories for each room we stage.',
+      },
+      {
+        id: 'starter-package',
+        name: 'Starter package',
+        price: '$1,800–$2,400',
+        unit: 'one-time',
+        description:
+          'Design, install, and the first month of staging for your key rooms — ideal for getting a listing photo-ready fast.',
+        featured: true,
+      },
+      {
+        id: 'consultation',
+        name: 'Staging consultation',
+        price: '$300–$350',
+        unit: 'per session',
+        description:
+          'A one-hour walkthrough of the property with a detailed, room-by-room report you can act on yourself.',
+      },
+      {
+        id: 'hourly',
+        name: 'Hourly rate',
+        price: '$250',
+        unit: 'per hour',
+        description:
+          'Hands-on styling or shopping support, billed by the hour for smaller, focused projects.',
+      },
     ],
     faqs: [
       {
-        question: 'How much does home staging cost in Colorado?',
+        question: 'How much does home staging cost?',
         answer:
-          'Staging is priced per project based on the size of the home, number of rooms, and length of the staging period. We provide a free, no-obligation quote after a quick walkthrough or a few photos of the property.',
+          'Vacant and occupied staging is typically priced per room, from $450 to $650 per room for full furnishing and logistics. A starter package covering design, install, and the first month for key rooms runs $1,800 to $2,400. Prefer a DIY plan? A staging consultation is $300 to $350, and hands-on styling or shopping is available at $250 per hour. Every project starts with a free, no-obligation quote.',
       },
       {
         question: 'Do staged homes really sell for more?',
         answer:
-          'Industry data shows professionally staged homes can sell for up to 15% more and spend significantly less time on the market than comparable unstaged listings.',
+          'Industry data shows professionally staged homes sell for up to 25% more and spend significantly less time on the market than comparable unstaged listings. 83% of buyers’ agents say staging makes it easier for clients to picture a property as their future home.',
       },
       {
         question: 'Do you provide the furniture?',
         answer:
-          'Yes. We maintain our own inventory of furniture, art, and accessories and bring everything needed to style the home — you do not need to source or rent anything separately.',
+          'Yes. For vacant staging we maintain our own inventory of furniture, art, and accessories and bring everything needed to style the home. For occupied homes, we blend your existing pieces with our staging inventory so you do not need to source or rent anything separately.',
       },
     ],
-    image:
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'A staged living room with neutral furnishings and soft natural light',
+    image: '/images/gallery/vacant_stagging/denver.avif',
+    imageAlt: 'A professionally staged living room with neutral furnishings',
   },
   {
     slug: 'interior-design',
     shortName: 'Design',
     name: 'Interior Design',
     summary:
-      'Elegant, timeless interiors tailored to how you live — from a single-room refresh to full redesign and implementation.',
+      'Interior design, made simple. We uncover your style and handle the heavy lifting — from cabinets and flooring to furniture, textiles, and art.',
     intro:
-      'Your home should feel like you. We design rooms that are beautiful and livable, balancing fresh, current style with a sense of warmth that lasts well beyond the trends.',
+      'Let’s be honest: walking into a showroom or staring at a wall of paint swatches can feel incredibly overwhelming. There are thousands of choices — but you only need the right ones. That’s where we come in.',
     sections: [
       {
-        heading: 'Consultation or full service',
+        heading: 'Interior Design, Made Simple',
         body: [
-          'Prefer to do the work yourself? Our design consultation gives you a clear, actionable plan — layout, color, furniture, and finishes — that you can execute at your own pace.',
-          'Want it handled end to end? Our full-service design covers sourcing, procurement, and styling, so you simply walk into a finished space.',
+          'We partner with you to uncover your unique style and bring it to life, handling all the heavy lifting and decision-making stress. No project is too big or too small. We’re here to help you select and style:',
         ],
-      },
-      {
-        heading: 'Our aesthetic',
-        body: [
-          'Fresh, clean, timeless, and sophisticated — the same principles that guide our brand guide every room we design. We layer texture, light, and considered detail to create spaces that feel collected, not decorated.',
+        items: [
+          { label: 'The Bones', text: 'Cabinets, flooring, countertops, and hardware.' },
+          {
+            label: 'The Atmosphere',
+            text: 'Perfect paint colors, lighting fixtures, and finishes.',
+          },
+          {
+            label: 'The Polish',
+            text: 'Furniture layout, cozy textiles, rugs, and curated artwork.',
+          },
         ],
+        outro:
+          'Ready to create your dream space? Let’s build something beautiful together.',
       },
     ],
     highlights: [
@@ -97,32 +147,50 @@ export const services: Service[] = [
           'Absolutely. We frequently build a refreshed design around pieces you love, supplementing with new items where needed to complete the look.',
       },
     ],
-    image:
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'A thoughtfully designed interior with layered textures and warm tones',
+    image: '/images/gallery/interior_design/living_room/1.avif',
+    imageAlt: 'A thoughtfully designed living room with layered textures and warm tones',
   },
   {
     slug: 'color-consult',
     shortName: 'Color Consult',
     name: 'Color Consultation',
     summary:
-      'Choosing paint colors is harder than it looks. We help you select palettes that flatter your light, your finishes, and your home.',
+      'Eliminate the guesswork. We analyze your light, finishes, and furnishings to build a cohesive palette that flows from room to room.',
     intro:
-      'The right paint color can transform a room — and the wrong one is an expensive mistake. Our color consultation takes the guesswork out, with expert palette recommendations tailored to your space.',
+      'Staring at a wall of endless paint swatches can feel incredibly overwhelming. Light shifts throughout the day, and a color that looks perfect in the store can look completely different on your walls.',
     sections: [
       {
-        heading: 'Get the color right the first time',
+        heading: 'Eliminate the Guesswork. Get the Perfect Palette.',
         body: [
-          'Lighting, undertones, fixed finishes, and flow between rooms all change how a color reads. We evaluate your space in person and recommend a cohesive palette that works in your actual light — not just on a swatch.',
-          'You leave with specific paint selections for walls, trim, and accents, ready to hand to your painter.',
+          'Our professional color consultation takes the stress out of the process. We analyze your home’s unique architectural features, natural lighting, flooring, and existing furnishings to create a cohesive, beautiful color palette that flows effortlessly from room to room.',
         ],
+      },
+      {
+        heading: 'What’s Included',
+        body: [],
+        items: [
+          {
+            label: 'Interior & Exterior Palettes',
+            text: 'Expert selection for walls, ceilings, trim, cabinetry, doors, and exterior facades.',
+          },
+          {
+            label: 'Lighting Analysis',
+            text: 'We evaluate how your home’s natural and artificial light will affect different paint undertones.',
+          },
+          {
+            label: 'Full Specification List',
+            text: 'You’ll receive the exact brand, color names, numbers, and recommended finishes (sheens) to hand directly to your painter.',
+          },
+        ],
+        outro:
+          'Stop buying endless sample pots. Let’s find the exact shades that will make your space feel cohesive, bright, and perfectly tailored to your style.',
       },
     ],
     highlights: [
-      'Whole-home or single-room palettes',
-      'Wall, trim, and accent color selections',
-      'Recommendations matched to your light and finishes',
-      'Paint-ready specifications for your painter',
+      'Interior & exterior palettes for walls, ceilings, trim, cabinetry, and doors',
+      'Lighting analysis for how natural and artificial light affect undertones',
+      'A full specification list: exact brand, color names, numbers, and finishes',
+      'A paint-ready palette you can hand straight to your painter',
     ],
     faqs: [
       {
@@ -130,10 +198,14 @@ export const services: Service[] = [
         answer:
           'Most consultations take one to two hours depending on the number of rooms. You receive specific paint recommendations you can act on right away.',
       },
+      {
+        question: 'What will I receive at the end?',
+        answer:
+          'You’ll get a full specification list with the exact brand, color names, numbers, and recommended finishes (sheens) for every surface — ready to hand directly to your painter. No guesswork, no sample pots.',
+      },
     ],
-    image:
-      'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: 'Paint swatches and color samples arranged on a table',
+    image: '/images/gallery/interior_design/kitchen2.avif',
+    imageAlt: 'A bright kitchen styled with a cohesive color palette',
   },
 ];
 

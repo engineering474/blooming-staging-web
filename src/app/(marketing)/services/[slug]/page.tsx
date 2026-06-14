@@ -5,6 +5,7 @@ import { Check } from 'lucide-react';
 import { Container } from '@/components/common/Container';
 import { PageHero } from '@/components/common/PageHero';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { PricingTable } from '@/components/services/PricingTable';
 import { Faq } from '@/components/common/Faq';
 import { JsonLd } from '@/components/common/JsonLd';
 import { Button } from '@/components/ui/button';
@@ -88,11 +89,33 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               {service.sections.map((section) => (
                 <div key={section.heading} className="flex flex-col gap-4">
                   <h2 className="font-display text-3xl">{section.heading}</h2>
+                  {section.tagline && (
+                    <p className="font-accent text-lg text-gold">{section.tagline}</p>
+                  )}
                   {section.body.map((p, i) => (
                     <p key={i} className="text-base leading-relaxed text-muted-foreground text-pretty">
                       {p}
                     </p>
                   ))}
+                  {section.items && (
+                    <ul className="flex flex-col gap-5">
+                      {section.items.map((item) => (
+                        <li key={item.label}>
+                          <span className="tracking-brand block text-xs font-medium uppercase text-gold">
+                            {item.label}
+                          </span>
+                          <span className="mt-1.5 block text-base leading-relaxed text-charcoal/85 text-pretty">
+                            {item.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {section.outro && (
+                    <p className="text-base leading-relaxed text-muted-foreground text-pretty">
+                      {section.outro}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -117,6 +140,21 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
         </Container>
       </section>
+
+      {/* Pricing */}
+      {service.pricing && service.pricing.length > 0 && (
+        <section className="py-16 sm:py-24">
+          <Container size="wide">
+            <SectionHeading
+              eyebrow="Pricing"
+              title="Packages & rates"
+              description="Transparent options to match your property and budget. Every project starts with a free, no-obligation quote."
+              className="mb-14"
+            />
+            <PricingTable tiers={service.pricing} />
+          </Container>
+        </section>
+      )}
 
       {/* FAQs */}
       {service.faqs.length > 0 && (

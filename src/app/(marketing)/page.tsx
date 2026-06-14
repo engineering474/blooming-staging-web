@@ -1,7 +1,7 @@
 import { Hero } from '@/components/home/Hero';
 import { ServiceCards } from '@/components/home/ServiceCards';
 import { AboutTeaser } from '@/components/home/AboutTeaser';
-import { FeaturedProjects } from '@/components/home/FeaturedProjects';
+import { StatsBand } from '@/components/home/StatsBand';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CtaSection } from '@/components/home/CtaSection';
 import { JsonLd } from '@/components/common/JsonLd';
@@ -14,7 +14,7 @@ export default function HomePage() {
       <Hero />
       <ServiceCards />
       <AboutTeaser />
-      <FeaturedProjects />
+      <StatsBand />
       <Testimonials />
       <CtaSection />
     </>
