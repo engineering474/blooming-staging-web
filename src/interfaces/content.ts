@@ -140,6 +140,9 @@ export interface GalleryImage {
   desc?: string;
   /** Accessible alt text; falls back to `label` when omitted. */
   alt?: string;
+  /** Intrinsic pixel size — what a CMS asset record reports for the file. */
+  width?: number;
+  height?: number;
 }
 
 /** A labeled album (e.g. "Living Room") — a tile that opens a carousel. */

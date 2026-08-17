@@ -5,7 +5,7 @@ import { JsonLd } from '@/components/common/JsonLd';
 import { AlbumGallery } from '@/components/gallery/AlbumGallery';
 import { CtaSection } from '@/components/home/CtaSection';
 import { buildBreadcrumb, buildCollectionPage } from '@/lib/seo/json-ld';
-import { galleryCategories } from '@/content/gallery';
+import { getGalleryCategories } from '@/lib/content/gallery';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
@@ -20,7 +20,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const galleryCategories = await getGalleryCategories();
+
   // Flatten albums for the CollectionPage JSON-LD (cover image per album).
   const albumItems = galleryCategories.flatMap((category) =>
     category.albums.map((album) => ({

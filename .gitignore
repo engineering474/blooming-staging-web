@@ -29,3 +29,8 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# Full-size photo originals, kept locally as the source for re-encoding. The
+# site serves the converted copies under public/images/gallery/, which ARE
+# committed.
+/public/images/stagging/

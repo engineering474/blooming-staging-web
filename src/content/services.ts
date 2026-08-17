@@ -97,7 +97,7 @@ export const services: Service[] = [
           'Yes. For vacant staging we maintain our own inventory of furniture, art, and accessories and bring everything needed to style the home. For occupied homes, we blend your existing pieces with our staging inventory so you do not need to source or rent anything separately.',
       },
     ],
-    image: '/images/gallery/vacant_stagging/denver.avif',
+    image: '/images/gallery/staging/denver/01.avif',
     imageAlt: 'A professionally staged living room with neutral furnishings',
   },
   {
