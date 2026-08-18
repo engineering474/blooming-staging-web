@@ -31,8 +31,9 @@ export function AboutTeaser() {
               Transforming houses into homes since 2020
             </h2>
             <p className="text-base leading-relaxed text-muted-foreground text-pretty">
-              Since 2020, founders {siteConfig.founders.join(' and ')} have built a powerhouse
-              boutique staging company from scratch across Colorado&apos;s Front Range — hand-staging
+              Since 2020, founders {siteConfig.founders.join(' and ')}{' '}
+              have built a powerhouse boutique staging company from scratch across
+              Colorado&apos;s Front Range — hand-staging
               over 500 homes and more than $250M in local real estate. We own every piece of our
               warehouse inventory and stay hands-on from the first design concept to the last sofa up
               the stairs.
