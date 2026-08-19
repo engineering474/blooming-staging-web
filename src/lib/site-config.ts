@@ -32,6 +32,9 @@ export const siteConfig = {
 
   // Brand credit
   brandDesignBy: 'Pier 9 Design',
+
+  // Wedy lead form embedded on /contact (overridable via NEXT_PUBLIC_WEDY_FORM_ID)
+  wedyFormId: '6a8568bf7609b342b68c534d',
 } as const;
 
 /** Absolute URL helper for canonical / OG / JSON-LD. */

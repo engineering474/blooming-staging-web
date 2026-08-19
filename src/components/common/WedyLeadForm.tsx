@@ -2,6 +2,7 @@
 
 import Script from 'next/script';
 import { cn } from '@/lib/utils';
+import { siteConfig } from '@/lib/site-config';
 
 interface WedyLeadFormProps {
   /** Wedy lead-form ID. Falls back to NEXT_PUBLIC_WEDY_FORM_ID. */
@@ -11,7 +12,7 @@ interface WedyLeadFormProps {
 }
 
 const WIDGET_URL =
-  process.env.NEXT_PUBLIC_WEDY_WIDGET_URL || 'https://app.wedyapp.com/widget.js';
+  process.env.NEXT_PUBLIC_WEDY_WIDGET_URL || 'https://www.wedypro.ai/widget.js';
 
 /**
  * Embeds a Wedy lead form using the official widget snippet:
@@ -22,7 +23,7 @@ const WIDGET_URL =
  * Set NEXT_PUBLIC_WEDY_FORM_ID (and optionally NEXT_PUBLIC_WEDY_WIDGET_URL).
  */
 export function WedyLeadForm({ formId, theme = 'light', className }: WedyLeadFormProps) {
-  const id = formId || process.env.NEXT_PUBLIC_WEDY_FORM_ID;
+  const id = formId || process.env.NEXT_PUBLIC_WEDY_FORM_ID || siteConfig.wedyFormId;
 
   if (!id) {
     return (
