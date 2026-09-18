@@ -7,11 +7,14 @@ import { siteConfig } from '@/lib/site-config';
 
 /**
  * The widget styles itself like a full hosted page (min-height: 100vh plus
- * outer padding), which adds a large blank band above the fields when embedded.
- * Its shadow root is open, so we inject overrides to make it sit flush.
+ * outer padding), which adds blank space above and below the fields when
+ * embedded. Both the classic and "blocks" layouts set the 100vh min-height.
+ * Its shadow root is open, so we inject overrides so the widget only takes
+ * the height of the form itself.
  */
 const SHADOW_OVERRIDES = `
-  .wedy-form-container {
+  .wedy-form-container,
+  .wedy-form-container-blocks {
     min-height: 0 !important;
     padding: 0 !important;
     background: transparent !important;
@@ -55,16 +58,14 @@ export function WedyLeadForm({ formId, theme = 'light', className }: WedyLeadFor
       return true;
     };
 
-    // The widget script attaches the shadow root asynchronously; poll briefly.
+    // The widget script attaches the shadow root asynchronously and then marks
+    // the host with data-wedy-initialized, so watch that attribute instead of polling.
     if (injectOverrides()) return;
-    const interval = window.setInterval(() => {
-      if (injectOverrides()) window.clearInterval(interval);
-    }, 200);
-    const timeout = window.setTimeout(() => window.clearInterval(interval), 15000);
-    return () => {
-      window.clearInterval(interval);
-      window.clearTimeout(timeout);
-    };
+    const observer = new MutationObserver(() => {
+      if (injectOverrides()) observer.disconnect();
+    });
+    observer.observe(host, { attributes: true, attributeFilter: ['data-wedy-initialized'] });
+    return () => observer.disconnect();
   }, [id]);
 
   if (!id) {
